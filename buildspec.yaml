@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing APACHE
+      - sudo yum update -y
+      - sudo yum install -y httpd
+      - sudo /usr/sbin/httpd
+  build:
+    commands:
+      - echo Build started on `date`
+      - cp index.html /var/www/html
+  post_build:
+    commands:
+      - echo Configuring APACHE
+
+artifacts:
+  files:
+    - "**/*"
